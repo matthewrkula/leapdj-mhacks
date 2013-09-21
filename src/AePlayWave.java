@@ -16,6 +16,7 @@ public class AePlayWave extends Thread {
     int frameCounter;
     int skippedFrame = 10;
     int direction = 1;
+    int frame;
  
     enum Position { 
         LEFT, RIGHT, NORMAL
@@ -64,15 +65,14 @@ public class AePlayWave extends Thread {
         } 
  
         auline.start();
-        
         boolean moveForward = true;
         frameCounter = 0;
         
     	try{
-	        FrameBuffer frameStream = new FrameBuffer(audioInputStream); //austream is the audiostream
+	        FrameBuffer frameStream = new FrameBuffer(audioInputStream); 
 	        System.out.println("Number of frames: " + frameStream.numberFrames());
 	        int frameNumber = frameStream.numberFrames();
-	        int frame = 0;
+	        frame = 0;
 	        while (frame < frameNumber) {
 	             auline.write(frameStream.getFrame(frame), 0, frameStream.frameSize());
 	             
@@ -103,6 +103,10 @@ public class AePlayWave extends Thread {
     
     public void setDirection(int depth){
     	this.direction = depth > 0 ? 1 : -1;
+    }
+    
+    public void jumpBack(){
+    	this.frame = this.frame - 10000;
     }
 } 
  
