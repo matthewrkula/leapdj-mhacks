@@ -6,11 +6,18 @@ import interfaces.TapListener;
 import java.io.File;
 import java.io.IOException;
 
+import javax.media.ClockStoppedException;
+import javax.media.Control;
+import javax.media.ControllerEvent;
+import javax.media.ControllerListener;
 import javax.media.Format;
+import javax.media.IncompatibleTimeBaseException;
 import javax.media.Manager;
 import javax.media.MediaLocator;
 import javax.media.Player;
 import javax.media.PlugInManager;
+import javax.media.Time;
+import javax.media.TimeBase;
 import javax.media.format.AudioFormat;
 
 import com.leapmotion.leap.Controller;
@@ -29,7 +36,7 @@ class MyPlayer implements HeightListener, DepthListener, TapListener, SpinnerLis
 	
 	public void play(){
 		player = new AePlayWave("guacamole.wav");
-//		player = new AePlayWave("shake1.wav");
+//		player = new AePlayWave("matzo.wav");
 		player.start();
 		
         LeapListener listener = new LeapListener(this, this, this, this);
@@ -50,7 +57,7 @@ class MyPlayer implements HeightListener, DepthListener, TapListener, SpinnerLis
 			siren = Manager.createPlayer(new MediaLocator(new File("siren.mp3").toURI().toURL()));
 	
 	        // Keep this process running until Enter is pressed
-	        System.out.println("Press Enter to quit...");
+	        System.out.println("Loading... Please wait...");
 	        System.in.read();
 		}catch(IOException e){
 			System.out.println(e.toString());
