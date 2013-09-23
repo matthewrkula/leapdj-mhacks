@@ -28,8 +28,6 @@ class LeapListener extends Listener {
 		this.s = s;
 	}
 	
-	
-
     @Override
 	public void onInit(Controller c) {
 		// TODO Auto-generated method stub
