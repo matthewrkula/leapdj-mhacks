@@ -8,3 +8,5 @@ So far it supports:
   - Controlling pitch and tempo using one hand with five fingers spread out.
   - Reversing the song when two hands are detected (move second hand in/out for "scratching" effect)
   - Playing extra audio with one spinning finger (siren.mp3 will play right now)
+
+This project requires the LeapSDK and the Java Media Framework (JMF) for audio playback. 
